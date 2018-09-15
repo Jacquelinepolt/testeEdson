@@ -1,0 +1,141 @@
+{
+	"info": {
+		"_postman_id": "3d3eb4ed-5ad9-432f-a792-34a2bb801a28",
+		"name": "Atividade Teste",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "teste 2 - Filme",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "da9aec7a-fcc4-49ff-bef7-0bf8a3d705ee",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"test 1 - http return\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"test 2 - Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"test 3 - Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Canada\");",
+							"});",
+							"",
+							"pm.test(\"JSON body check\", function () {",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"test 4 - Verify if Title{} is Matrix\"] = jsonData.Title === \"Matrix\";",
+							"tests[\"test 5 - Verify the IMDB ID tt0106062\"] = jsonData.imdbID === \"tt0106062\";",
+							"tests[\"test 6 - Verify if Release Date is March 1st, 1993.\"] = jsonData.Released === \"01 Mar 1993\";",
+							"tests[\"test 7 - Verify if it has 3 different genres\"] = jsonData.Genre === \"Action, Drama, Fantasy\";",
+							"tests[\"test 8 - Verify Runtime\"] = jsonData.Runtime === \"60 min\";",
+							"tests[\"test 9 - Verify Writer\"] = jsonData.Writer === \"Grenville Case\";",
+							"tests[\"test 10 - Verify Language\"] = jsonData.Language === \"English\";",
+							"tests[\"test 11 - Verify Metascore\"] = jsonData.Metascore === \"N/A\";",
+							"tests[\"test 12 - Verify imdbRating\"] = jsonData.imdbRating === \"8.4\";",
+							"tests[\"test 13 - Verify imdbVotes\"] = jsonData.imdbVotes === \"103\";",
+							"tests[\"test 14 - Verify Type\"] = jsonData.Type === \"series\";",
+							"tests[\"test 15 - Verify totalSeasons\"] = jsonData.totalSeasons === \"N/A\";",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://www.omdbapi.com?apikey=3fbaf1be&t=Matrix",
+					"protocol": "http",
+					"host": [
+						"www",
+						"omdbapi",
+						"com"
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "3fbaf1be"
+						},
+						{
+							"key": "t",
+							"value": "Matrix"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "teste 3 - Serie de TV",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "65343198-5e73-4742-bc57-f9f813d9f794",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"test 1 - http return\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"test 2 - Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"JSON body check\", function () {",
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"test 3 - Verify if Title{} is CSI\"] = jsonData.Title === \"CSI: Crime Scene Investigation\";",
+							"tests[\"test 4 - Verify Year\"] = jsonData.Year === \"2000–2015\";",
+							"tests[\"test 5 - Verify Rated\"] = jsonData.Rated === \"TV-14\";",
+							"tests[\"test 6 - Verify Released\"] = jsonData.Released === \"06 Oct 2000\";",
+							"tests[\"test 7 - Verify Runtime\"] = jsonData.Runtime === \"60 min\";",
+							"tests[\"test 8 - Verify Genre\"] = jsonData.Genre === \"Crime, Drama, Mystery\";",
+							"tests[\"test 9 - Verify Director\"] = jsonData.Director === \"N/A\";",
+							"tests[\"test 10 - Verify Language\"] = jsonData.Language === \"English, Spanish, American Sign Language\";",
+							"tests[\"test 11 - Verify Country\"] = jsonData.Country === \"USA, Canada\";",
+							"tests[\"test 12 - Verify Awards\"] = jsonData.Awards === \"Nominated for 6 Golden Globes. Another 65 wins & 120 nominations.\";",
+							"tests[\"test 13 - Verify imdbVotes\"] = jsonData.imdbVotes === \"70,550\";",
+							"tests[\"test 14 - Verify Type\"] = jsonData.Type === \"series\";",
+							"tests[\"test 15 - Verify totalSeasons\"] = jsonData.totalSeasons === \"16\";",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://www.omdbapi.com?apikey=3fbaf1be&t=CSI: Crime Scene Investigation",
+					"protocol": "http",
+					"host": [
+						"www",
+						"omdbapi",
+						"com"
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "3fbaf1be"
+						},
+						{
+							"key": "t",
+							"value": "CSI: Crime Scene Investigation"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
